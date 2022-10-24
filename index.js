@@ -1,12 +1,11 @@
 const express = require('express')
-const req = require('express/lib/request')
+const userRouter = require('./routes/routes')
 
 const PORT = process.env.PORT || 8080
 
 const app = express()
+app.use(express.json())
+app.use('/api', userRouter)
 
-app.get('/', (req, res)=>{
-    res.send('HELLO POSTGRES + NODEJS')
-})
 
 app.listen(PORT, ()=>console.log(`server started on post ${PORT}`))
